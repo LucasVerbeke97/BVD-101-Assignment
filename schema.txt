@@ -1,0 +1,19 @@
+types
+Book - 
+        id
+        title
+        author
+        pubDate
+        ISBN
+
+Author - 
+        id
+        name
+        books (array)
+        bio
+
+User - 
+        id
+        user name
+        email
+        booksOwned (array)
