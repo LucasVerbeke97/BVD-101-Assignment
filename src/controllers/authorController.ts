@@ -1,7 +1,7 @@
 import fs, { read } from 'fs';
 import path from 'path';
 
-import { Author } from "../models/author";
+import { Author } from "../models/Author";
 import { Request, Response } from 'express';
 
 const authorFilePath = path.join(__dirname, '../data/authors.json');
