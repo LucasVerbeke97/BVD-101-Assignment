@@ -42,6 +42,10 @@ export const validateUpdateBook = [
         .isString()
         .withMessage('ISBN must be a string.'),
 ];
+export const validateGetBookByID = [
+    body('id')
+    .isNumeric()
+];
 
 
 //user
@@ -75,6 +79,11 @@ export const validateUpdateUser = [
         .isArray()
         .withMessage('Purchased books must be an array.'),
 ];
+export const validateGetUserByID = [
+    body('id')
+    .isNumeric()
+];
+
 
 //author
 export const validateAuthor = [
@@ -102,4 +111,8 @@ export const validateUpdateAuthor = [
         .optional() 
         .isString()
         .withMessage('Biography must be a string.'),
+];
+export const validateGetAuthorByID = [
+    body('id')
+    .isNumeric()
 ];

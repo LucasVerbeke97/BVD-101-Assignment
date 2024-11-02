@@ -36,6 +36,19 @@ export const getBooks = (req: Request, res: Response): void => {
     res.status(200).json(books);
 };
 
+export const getBookbyID = (req: Request, res: Response): void => {
+    const bookID = parseInt(req.params.id, 10);
+
+    const books: Book[] = readData<Book>(booksFilePath);
+
+    const book = books.find(b => b.id === bookID);
+
+    if(book)
+      res.status(200).json(book);
+    else
+      res.status(404).json({message: 'Book does not exist'});
+};
+
 export const updateBook = (req: Request, res: Response): void => {
     const books: Book[] = readData<Book>(booksFilePath);
     const index = books.findIndex(book => book.id === parseInt(req.params.id));

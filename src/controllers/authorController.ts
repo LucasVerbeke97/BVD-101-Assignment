@@ -36,6 +36,19 @@ export const getAuthors = (req: Request, res: Response): void => {
     res.status(200).json(authors);
 };
 
+export const getAuthorByID = (req: Request, res: Response): void => {
+    const authorID = parseInt(req.params.id, 10);
+
+    const authors: Author[] = readData<Author>(authorFilePath);
+
+    const author = authors.find(a => a.id === authorID);
+
+    if(author)
+      res.status(200).json(author);
+    else
+      res.status(404).json({message: 'Author does not exist'});
+};
+
 export const updateAuthor = (req: Request, res: Response): void => {
     const authors: Author[] = readData<Author>(authorFilePath);
     const index = authors.findIndex(author => author.id === parseInt(req.params.id));

@@ -36,6 +36,19 @@ export const getUsers = (req: Request, res: Response): void => {
     res.status(200).json(users);
 };
 
+export const getUserByID = (req: Request, res: Response): void => {
+    const userID = parseInt(req.params.id, 10);
+
+    const users: User[] = readData<User>(userFilePath);
+
+    const user = users.find(u => u.id === userID);
+
+    if(user)
+      res.status(200).json(user);
+    else
+      res.status(404).json({message: 'Book does not exist'});
+};
+
 export const updateUser = (req: Request, res: Response): void => {
     const users: User[] = readData<User>(userFilePath);
     const index = users.findIndex(user => user.id === parseInt(req.params.id));
